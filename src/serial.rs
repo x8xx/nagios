@@ -18,19 +18,17 @@ pub fn _print(args: ::core::fmt::Arguments) {
 }
 
 
-/// シリアルインターフェースを通じてホストに出力する。
 #[macro_export]
-macro_rules! serial_print {
+macro_rules! print {
     ($($arg:tt)*) => {
         $crate::serial::_print(format_args!($($arg)*));
     };
 }
 
-/// シリアルインターフェースを通じてホストに出力し、改行を末尾に追加する。
 #[macro_export]
-macro_rules! serial_println {
+macro_rules! println {
     () => ($crate::serial_print!("\n"));
-    ($fmt:expr) => ($crate::serial_print!(concat!($fmt, "\n")));
-    ($fmt:expr, $($arg:tt)*) => ($crate::serial_print!(
+    ($fmt:expr) => ($crate::print!(concat!($fmt, "\n")));
+    ($fmt:expr, $($arg:tt)*) => ($crate::print!(
         concat!($fmt, "\n"), $($arg)*));
 }

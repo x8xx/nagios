@@ -11,5 +11,11 @@ cargo bootimage
 
 ## run
 ```
-qemu-system-x86_64 -nographic -drive format=raw,file=target/x86_64-nagios/debug/bootimage-nagios.bin
+#qemu-system-x86_64 -nographic -drive format=raw,file=target/x86_64-nagios/debug/bootimage-nagios.bin
+cargo run -- -nographic
+```
+
+## test
+```
+cargo test
 ```
