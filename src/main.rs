@@ -9,10 +9,14 @@ use core::panic::PanicInfo;
 
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
-    nagios::println!("Hello World");
+    nagios::println!("Hello NagiOS");
+    nagios::init();
+
+    x86_64::instructions::interrupts::int3();
 
     #[cfg(test)]
     test_main();
+
     loop {}
 }
 
